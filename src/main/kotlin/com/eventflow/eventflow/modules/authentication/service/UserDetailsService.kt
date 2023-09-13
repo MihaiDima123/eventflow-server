@@ -1,4 +1,4 @@
-package com.eventflow.eventflow.modules.users.services
+package com.eventflow.eventflow.modules.authentication.service
 
 import com.eventflow.eventflow.modules.users.repository.UserRepository
 import org.springframework.security.core.authority.SimpleGrantedAuthority

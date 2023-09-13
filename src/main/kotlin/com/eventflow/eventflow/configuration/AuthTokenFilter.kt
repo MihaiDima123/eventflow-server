@@ -1,6 +1,6 @@
 package com.eventflow.eventflow.configuration
 
-import com.eventflow.eventflow.modules.users.utils.JwtUtils
+import com.eventflow.eventflow.modules.authentication.utils.JwtUtils
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

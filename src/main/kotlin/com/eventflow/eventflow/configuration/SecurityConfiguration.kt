@@ -1,6 +1,6 @@
 package com.eventflow.eventflow.configuration
 
-import com.eventflow.eventflow.modules.users.services.UserDetailsService
+import com.eventflow.eventflow.modules.authentication.service.UserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager

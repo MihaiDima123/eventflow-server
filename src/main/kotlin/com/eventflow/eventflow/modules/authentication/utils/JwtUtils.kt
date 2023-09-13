@@ -1,4 +1,4 @@
-package com.eventflow.eventflow.modules.users.utils
+package com.eventflow.eventflow.modules.authentication.utils
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.MalformedJwtException

@@ -1,4 +1,4 @@
-package com.eventflow.eventflow.modules.users.dao
+package com.eventflow.eventflow.modules.authentication.dao
 
 class RegisterRequest(
     val email: String,
