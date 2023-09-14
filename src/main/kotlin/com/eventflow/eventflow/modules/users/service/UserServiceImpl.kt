@@ -1,7 +1,7 @@
 package com.eventflow.eventflow.modules.users.service
 
 import com.eventflow.eventflow.exception.EventFlowUniqueException
-import com.eventflow.eventflow.modules.authentication.dao.RegisterRequest
+import com.eventflow.eventflow.modules.authentication.dto.RegisterRequest
 import com.eventflow.eventflow.modules.users.entitiy.User
 import com.eventflow.eventflow.modules.users.repository.UserPermissionRepository
 import com.eventflow.eventflow.modules.users.repository.UserRepository
@@ -24,6 +24,9 @@ class UserServiceImpl(
             User(
                 email = registerRequest.email,
                 password = passwordEncoder.encode(registerRequest.password),
+                firstName = registerRequest.firstName,
+                lastName = registerRequest.lastName,
+                phoneNumber = registerRequest.phoneNumber,
                 permission = userPermissionRepository.findOneByName("USER")
             )
         )

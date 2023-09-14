@@ -25,7 +25,7 @@ class DatasourceConfig(
         config.username = username
         config.password = password
 
-        config.maximumPoolSize = 2
+        config.maximumPoolSize = 1
         config.connectionTimeout = 30_000
         config.idleTimeout = 600_000
         config.maximumPoolSize = 180_000

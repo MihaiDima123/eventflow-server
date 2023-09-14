@@ -2,8 +2,8 @@ package com.eventflow.eventflow.modules.authentication.controller
 
 import com.eventflow.eventflow.dao.BaseResponse
 import com.eventflow.eventflow.exception.EventFlowUniqueException
-import com.eventflow.eventflow.modules.authentication.dao.LoginRequest
-import com.eventflow.eventflow.modules.authentication.dao.RegisterRequest
+import com.eventflow.eventflow.modules.authentication.dto.LoginRequest
+import com.eventflow.eventflow.modules.authentication.dto.RegisterRequest
 import com.eventflow.eventflow.modules.authentication.utils.JwtUtils
 import com.eventflow.eventflow.modules.users.service.UserService
 import org.slf4j.Logger

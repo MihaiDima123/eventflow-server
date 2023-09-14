@@ -1,4 +1,4 @@
-package com.eventflow.eventflow.modules.authentication.dao
+package com.eventflow.eventflow.modules.authentication.dto
 
 class LoginRequest(
     val email: String,

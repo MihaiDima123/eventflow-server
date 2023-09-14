@@ -3,6 +3,7 @@ package com.eventflow.eventflow.configuration
 import com.eventflow.eventflow.modules.authentication.service.UserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
@@ -12,6 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+import org.springframework.web.filter.CorsFilter
+
 
 @Configuration
 @EnableWebSecurity
@@ -19,12 +24,29 @@ class SecurityConfiguration(
     private val userDetailsService: UserDetailsService,
     private val authTokenFilter: AuthTokenFilter
 ) {
+
+    @Bean
+    fun corsFilter(): CorsFilter {
+        val source = UrlBasedCorsConfigurationSource()
+        val config = CorsConfiguration()
+        config.allowCredentials = true
+        config.addAllowedOriginPattern("*")
+        config.addAllowedHeader("*")
+        config.addExposedHeader(HttpHeaders.AUTHORIZATION)
+        config.addAllowedMethod("*")
+        source.registerCorsConfiguration("/**", config)
+        return CorsFilter(source)
+    }
+
     @Bean
     fun securityFilterChain(httpSecurity: HttpSecurity): SecurityFilterChain {
-        val security = httpSecurity.csrf{ it.disable() }.cors{ it.disable() }
-                .authorizeHttpRequests{
-                    it.requestMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated()
+        val security =
+            httpSecurity
+                .csrf{ it.disable() }
+                .cors{ it.configure(httpSecurity) }
+                    .authorizeHttpRequests{
+                        it.requestMatchers("/auth/**").permitAll()
+                            .anyRequest().authenticated()
         }
 
         security.authenticationProvider(authenticationProvider())
