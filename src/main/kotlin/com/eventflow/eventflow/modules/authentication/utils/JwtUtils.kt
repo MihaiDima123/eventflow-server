@@ -30,7 +30,7 @@ class JwtUtils(
     }
 
     private fun key(): Key {
-        return Keys.hmacShaKeyFor(jwtSalt.toByteArray()) // TODO: Replace this
+        return Keys.hmacShaKeyFor(jwtSalt.toByteArray())
     }
 
     fun getUserNameFromJwtToken(token: String?): String {
