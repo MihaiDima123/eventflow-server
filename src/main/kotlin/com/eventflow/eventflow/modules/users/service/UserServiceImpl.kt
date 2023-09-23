@@ -24,9 +24,6 @@ class UserServiceImpl(
             User(
                 email = registerRequest.email,
                 password = passwordEncoder.encode(registerRequest.password),
-                firstName = registerRequest.firstName,
-                lastName = registerRequest.lastName,
-                phoneNumber = registerRequest.phoneNumber,
                 permission = userPermissionRepository.findOneByName("USER")
             )
         )
